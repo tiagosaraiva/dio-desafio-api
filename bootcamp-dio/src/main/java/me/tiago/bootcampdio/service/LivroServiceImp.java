@@ -34,16 +34,26 @@ public class LivroServiceImp implements LivroService {
 
     @Override
     public Livro Borrow(Long id) {
-        return null;
+
+        Livro livroUpdate = this.FindById(id);
+        livroUpdate.setEmprestado(true);
+        livroRepository.save(livroUpdate);
+        return  livroUpdate;
     }
 
     @Override
     public List<Livro> GetAll() {
-        return null;
+        return  livroRepository.findAll();
     }
 
     @Override
     public List<Livro> GetByCategory(String categoria) {
-        return null;
+
+        if(livroRepository.existsByCategoriaIgnoreCase(categoria))
+        {
+            return  livroRepository.findByCategoriaIgnoreCase(categoria);
+        }
+
+        throw new IllegalArgumentException("Não existem livros nessa categoria");
     }
 }

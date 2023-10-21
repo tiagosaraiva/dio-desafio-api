@@ -42,9 +42,33 @@ public class Livro {
         return this.titulo;
     }
     private String autor;
+    public String getAutor() {
+        return autor;
+    }
     private String categoria;
+    public String getCategoria() {
+        return categoria;
+    }
     private String serie;
+    public String getSerie() {
+        return serie;
+    }
     private  String url;
+    public String getUrl() {
+        return url;
+    }
     private int paginas;
+    public int getPaginas() {
+        return paginas;
+    }
     private boolean emprestado;
+    public boolean getEmprestado() {
+        return emprestado;
+    }
+    public void setEmprestado(boolean emprestado)
+    {
+        this.emprestado = emprestado;
+    }
+
+
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/livros")
@@ -27,8 +28,20 @@ public class LivroController {
         return ResponseEntity.ok(livro);
     }
 
+    @GetMapping("/livros")
+    public ResponseEntity<List<Livro>> getAll(){
+        List<Livro> listaLivros = livroService.GetAll();
+        return ResponseEntity.ok(listaLivros);
+    }
+
+    @GetMapping("/livros/categoria/{categoria}")
+    public ResponseEntity<List<Livro>> getByCategory(@PathVariable String categoria){
+        List<Livro> listaLivros = livroService.GetByCategory(categoria);
+        return ResponseEntity.ok(listaLivros);
+    }
+
     @PostMapping
-    public ResponseEntity<Livro> findById(@RequestBody Livro livro){
+    public ResponseEntity<Livro> create(@RequestBody Livro livro){
         var livroCreated = livroService.Create(livro);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
