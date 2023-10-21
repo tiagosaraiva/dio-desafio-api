@@ -10,7 +10,6 @@ public class BootcampDioApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BootcampDioApplication.class, args);
 
-		Livro objLivro = new Livro("Tiago","","","",1,false);
 
 	}
 
